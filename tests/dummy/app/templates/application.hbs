@@ -1,3 +1,75 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#ember-folio}}
+  {{#block-slot 'demo-pane'}}
+    {{frost-button
+      disabled=disabled
+      size=size
+      priority=priority
+      text=text
+    }}
+  {{/block-slot}}
+  {{#block-slot 'code-pane'}}
+    {{!-- BEGIN-SNIPPET button}}
+      {{frost-button
+        disabled= // (false by default)
+        size= // ['small', etc.]
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      }}
+    {{ END-SNIPPET --}}
+    {{code-snippet name='button.hbs'}}
+  {{/block-slot}}
+  {{#block-slot 'controls-pane'}}
+    {{#controls-pane onChange=(action (action 'updateProps'))}}
+      {{property-control
+        type='button-group'
+        label='Size'
+        buttons=(array
+          (hash text='small')
+          (hash text='medium')
+          (hash text='large')
+        )
+      }}
+      {{property-control
+        type='button-group'
+        label='Priority'
+        buttons=(array
+          (hash text='primary')
+          (hash text='secondary')
+          (hash text='tertiary')
+        )
+      }}
+      {{property-control
+        type='checkbox'
+        label='Disabled'
+        size='small'
+      }}
+      {{property-control
+        type='text'
+        label='Text'
+        value='Hello'
+      }}
+    {{/controls-pane}}
+  {{/block-slot}}
+{{/ember-folio}}
 
-{{outlet}}
+{{!-- {{ember-folio
+  params=(hash
+    content='frost-text'
+    controls=(array
+      (hash
+        type='select'
+        attrs=(array
+          (hash
+            data=(array 'First' 'Second')
+          )
+        )
+      )
+    )
+    props=(hash
+      value='first'
+    )
+  )
+}} --}}
+  {{!-- {{#controls-pane}}
+    {{component 'frost-select' data=options}}
+  {{/controls-pane}} --}}

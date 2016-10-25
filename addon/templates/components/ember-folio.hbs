@@ -1,0 +1,39 @@
+<div class="dummy-notification-container">
+{{notification-container position='top-right'}}
+</div>
+{{yield}}
+<div class='main-section'>
+
+  <div class='demo-pane'>
+    {{#yield-slot 'demo-pane'}}
+      <div class='title'>
+        Demo
+      </div>
+      {{yield}}
+    {{/yield-slot}}
+  </div>
+
+  <div class='code-pane'>
+    {{#yield-slot 'code-pane'}}
+      <div class='title'>
+        API
+      </div>
+      {{yield}}
+    {{/yield-slot}}
+  </div>
+  {{!-- {{demo-pane
+    content=params.content
+    props=params.props
+  }}
+  {{code-pane}} --}}
+</div>
+
+{{#yield-slot 'controls-pane'}}
+  {{yield}}
+  {{!-- {{frost-button
+    size='small'
+    priority='tertiary'
+    text='Update'
+    onClick=(action 'onClick')
+  }} --}}
+{{/yield-slot}}

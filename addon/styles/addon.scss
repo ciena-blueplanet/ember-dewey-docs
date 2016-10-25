@@ -1,0 +1,81 @@
+$pane-bg-color: #fffcf9;
+
+.notification-container {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  width: 80%;
+  max-width: 400px;
+  margin: auto;
+  z-index: 999;
+}
+
+.ember-folio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  .main-section {
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+    height: 490px;
+    margin: 5px;
+    background-color: $pane-bg-color;
+
+    .code-pane {
+      flex-basis: auto;
+      padding-left: 5px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 5px #888888;
+      background-color: $pane-bg-color;
+    }
+
+    .demo-pane {
+      flex: 3;
+      flex-basis: auto;
+      padding-left: 5px;
+      margin-right: 10px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 5px #888888;
+      background-color: $pane-bg-color;
+    }
+  }
+
+  .title {
+    padding-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .controls-pane {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 220px;
+    margin: 0 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #888888;
+    background-color: $pane-bg-color;
+
+    .property-control {
+      min-width: 200px;
+      box-sizing: border-box;
+      padding: 10px;
+    	margin-left: 10px;
+    	margin-top: 10px;
+
+
+      input[type=button] {
+        // border-right: 1px solid #0a3c59;
+        color: #000000;
+        font-size: 14px;
+
+         :active {
+           font-weight: bold;
+         }
+      }
+    }
+  }
+}

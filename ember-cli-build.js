@@ -1,12 +1,17 @@
-/*jshint node:true*/
 /* global require, module */
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+var EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
-  });
+    sassOptions: {
+      includePaths: [
+        'addon/styles'
+      ]
+    },
+    snippetSearchPaths: ['tests/dummy']
+  })
 
+  app.import('bower_components/highlightjs/styles/github.css')
   /*
     This build file specifies the options for the dummy test app of this
     addon, located in `/tests/dummy`
@@ -14,5 +19,5 @@ module.exports = function(defaults) {
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
 
-  return app.toTree();
-};
+  return app.toTree()
+}
