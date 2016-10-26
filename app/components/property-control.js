@@ -1,1 +1,1 @@
-export { default } from 'ember-folio/components/property-control';
+export { default } from 'ember-dewey-docs/components/property-control';

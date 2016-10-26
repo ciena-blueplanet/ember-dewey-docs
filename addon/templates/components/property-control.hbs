@@ -1,6 +1,8 @@
+<div class='label'>
   {{label}}
+</div>
+<div class='control'>
   {{#if (eq type "checkbox")}}
-
     {{frost-checkbox
       id=label
       onInput=_controlsPane.onChange
@@ -18,3 +20,10 @@
       onInput=(action 'onTextChange')
     }}
   {{/if}}
+  {{#if (eq type "multi-select")}}
+    {{frost-multi-select
+      data=data
+      onChange=(action 'onEventSelect')
+    }}
+  {{/if}}
+</div>

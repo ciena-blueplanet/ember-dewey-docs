@@ -1,19 +1,28 @@
-{{#ember-folio}}
+{{frost-select-outlet}}
+{{#ember-dewey-docs}}
   {{#block-slot 'demo-pane'}}
     {{frost-button
       disabled=disabled
+      icon=icon
       size=size
       priority=priority
       text=text
+      onClick=onClickHandler
     }}
+    {{!-- {{frost-text
+      onChange=onChangeHandler
+      onFocusIn=onFocusInHandler
+    }} --}}
   {{/block-slot}}
   {{#block-slot 'code-pane'}}
     {{!-- BEGIN-SNIPPET button}}
       {{frost-button
-        disabled= // (false by default)
-        size= // ['small', etc.]
-        priority= // ['primary', etc.]
-        text= // e.g. 'Foo'
+         autofocus= // (false by default)
+         disabled= // (false by default)
+         size= // ['small', etc.]
+         priority= // ['primary', etc.]
+         text= // e.g. 'Foo'
+         onClick= // action handler for button click
       }}
     {{ END-SNIPPET --}}
     {{code-snippet name='button.hbs'}}
@@ -48,11 +57,18 @@
         label='Text'
         value='Hello'
       }}
+      {{property-control
+        type='multi-select'
+        label='Events'
+        data=(array
+          (hash label='onClick' value='onClick')
+        )
+      }}
     {{/controls-pane}}
   {{/block-slot}}
-{{/ember-folio}}
+{{/ember-dewey-docs}}
 
-{{!-- {{ember-folio
+{{!-- {{ember-dewey-docs
   params=(hash
     content='frost-text'
     controls=(array

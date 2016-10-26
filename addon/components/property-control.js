@@ -1,5 +1,5 @@
 import Ember from 'ember'
-import ControlsPane from 'ember-folio/components/controls-pane'
+import ControlsPane from 'ember-dewey-docs/components/controls-pane'
 import layout from '../templates/components/property-control'
 
 export default Ember.Component.extend({
@@ -11,9 +11,14 @@ export default Ember.Component.extend({
     this.set('_controlsPane', this.nearestOfType(ControlsPane))
   },
 
+
+
   actions: {
     onButtonClick (val) {
       this.get('_controlsPane').onChange({ 'id' : this.get('label'), 'value': val})
+    },
+    onEventSelect (data) {
+        this.get('_controlsPane').onChange({'id' : 'events', 'value' : data})
     },
     onTextChange (event) {
       this.get('_controlsPane').onChange({'id' : this.get('label'), 'value' : event.target.value})

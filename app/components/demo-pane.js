@@ -1,1 +1,1 @@
-export { default } from 'ember-folio/components/demo-pane'
+export { default } from 'ember-dewey-docs/components/demo-pane'

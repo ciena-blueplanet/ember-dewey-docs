@@ -1,1 +1,1 @@
-export { default } from 'ember-folio/components/controls-pane'
+export { default } from 'ember-dewey-docs/components/controls-pane'
