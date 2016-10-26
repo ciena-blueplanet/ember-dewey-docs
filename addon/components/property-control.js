@@ -11,17 +11,15 @@ export default Ember.Component.extend({
     this.set('_controlsPane', this.nearestOfType(ControlsPane))
   },
 
-
-
   actions: {
     onButtonClick (val) {
-      this.get('_controlsPane').onChange({ 'id' : this.get('label'), 'value': val})
+      this.get('_controlsPane').onChange({'id': this.get('label'), 'value': val})
     },
     onEventSelect (data) {
-        this.get('_controlsPane').onChange({'id' : 'events', 'value' : data})
+      this.get('_controlsPane').onChange({'id': 'events', 'value': data})
     },
     onTextChange (event) {
-      this.get('_controlsPane').onChange({'id' : this.get('label'), 'value' : event.target.value})
+      this.get('_controlsPane').onChange({'id': this.get('label'), 'value': event.target.value})
     }
   }
 })

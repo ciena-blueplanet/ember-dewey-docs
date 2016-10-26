@@ -19,13 +19,13 @@ export default Ember.Controller.extend({
         if (val.id === 'events') {
           if (!Ember.isEmpty(val.value)) {
             val.value.forEach((selectedEvent) => {
-                this.set(`${selectedEvent}Handler`, () => {
-                  this.get('notifications').success(`${selectedEvent}Handler triggered.`, {
-                    autoClear: true,
-                    clearDuration: 2000
-                  })
+              this.set(`${selectedEvent}Handler`, () => {
+                this.get('notifications').success(`${selectedEvent}Handler triggered.`, {
+                  autoClear: true,
+                  clearDuration: 2000
                 })
               })
+            })
           } else {
             this.set('onClickHandler', null)
           }
