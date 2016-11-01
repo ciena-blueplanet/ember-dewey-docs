@@ -1,7 +1,13 @@
 import Ember from 'ember'
+const {
+  Controller,
+  inject,
+  isEmpty,
+  typeOf
+} = Ember
 
-export default Ember.Controller.extend({
-  notifications: Ember.inject.service('notification-messages'),
+export default Controller.extend({
+  notifications: inject.service('notification-messages'),
 
   size: 'medium',
   priority: 'primary',
@@ -15,9 +21,9 @@ export default Ember.Controller.extend({
 
   actions: {
     updateProps (val) {
-      if (Ember.typeOf(val) === 'object') {
+      if (typeOf(val) === 'object') {
         if (val.id === 'events') {
-          if (!Ember.isEmpty(val.value)) {
+          if (!isEmpty(val.value)) {
             val.value.forEach((selectedEvent) => {
               this.set(`${selectedEvent}Handler`, () => {
                 this.get('notifications').success(`${selectedEvent}Handler triggered.`, {

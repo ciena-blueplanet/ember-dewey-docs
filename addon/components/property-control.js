@@ -1,8 +1,9 @@
 import Ember from 'ember'
+const {Component} = Ember
 import ControlsPane from 'ember-dewey-docs/components/controls-pane'
 import layout from '../templates/components/property-control'
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
   classNames: ['property-control'],
 

@@ -1,7 +1,9 @@
 language: node_js
-sudo: false
+sudo: required
+dist: trusty
 node_js:
-- '5.3'
+- '5.0'
+- 'stable'
 branches:
   except:
   - /^v[0-9\.]+/
@@ -9,9 +11,17 @@ before_install:
 - npm install -g coveralls pr-bumper
 - pr-bumper check
 before_script:
+- export CHROME_BIN=/usr/bin/google-chrome
 - "export DISPLAY=:99.0"
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3 # give xvfb some time to start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
+script:
+- npm run lint
+- ember try:one $EMBER_TRY_SCENARIO
 install:
 - npm install
 - bower install
@@ -26,6 +36,7 @@ addons:
 env:
   matrix:
   - EMBER_TRY_SCENARIO=default
+  - EMBER_TRY_SCENARIO=ember-release
   global:
     - CXX=g++-4.8
     - secure: tq2xsKq+N8mr7PBpcUSUIfEIH2TEYMEqXGTCei94GeyNFo8BVykr81oSCxMbxVaMi/qp7d2v/Ptrk+wECBCQ52l8x4H9C1yGm7jk0b8Nl+3lUegjvjSDwojUIahGu0wcNm1Y4vwZ6t2It1qlLrOQmzqD9/5cIvI6HNiEhrUcSY9RkfxAiWzm55RFS5oqOEu1Dib71irSbPgl06Epfz8/VaI5t88nXavz+4uQYBHBWnY2auJsQOpxpr1DsgvtrLs6ycfSUF58httIeLJ7h/wtkobgZfVb1eBKd3bh3goIstKuwclZinZfL5BXnHhOUUn0OoT51B5oGhcgGK11frXdzXCgGPItJ/X8Q43srDWe+an4Z2lZgMnBVkk54EjGU2iTPF9rSSP+flaQaIabl0ZPYeGxmgoH0QeGx7oDV4w57aJcjX6L5zJ47W0c9tLFHXicJcasb4gtbRLxAaey54XeI1ItoTkPcARFUHD6B5lisiIjAcsfNWelIcY4jhdAXMBqUbkzxYykeN+p4x7m095DE2eucf4LRVFHHV2Bi+X31smLaKzShHwQLOlSJPUfpUvqE/6toA7x45wszGKtpzET7D/4jzB3tLZtASNrIekzhrpKmpLa7PF/iIpljCn2j8m+cHyXUQo/7C3n09iMsZEDG6bctsMus06sCDJdFg0bnic=
@@ -39,6 +50,8 @@ deploy:
     secure: XswbQ7GrToCl1wzJH+P6muh9tLkwsrXcGypDQWXgSwfQYKxcZslX80fLvn5LgbDqR/rrt0hrmxqrkGx+/yIq8aEqiY72loD0uAeXLCV8f5F7+jcsUsdb9woYDVlnrQfjdHoT9e8xASK9ycNfGD1KAIaqblxSbAhydls5DzIRCfFCbexJVLFMqQ39ydXNcFAQydYX8P3j/97usrn6olWP+G4bKyRSZbEg/faDf5yp1lpMciYe/PrS0f6xtds7opIzkBSTamN/c+POgXxD/9mbTYyC7uX3qAIc77hFmhlva/fPR5TidXA1MOKNAufHjeV+UwPHGruXj4Jv02GkElOwllnOWqapfgTGiLSV/t+a09po6P2txc+0d1tq2kI8p1EePiYSDZteFHxpu3eHGkieZWNFG/5qZgmVINfpVF1HtiRen4MgWic6qe78PHIl94aS3XhqO9i81oHB/c4udJcZ8XjDHwMasBiS6Dbkaqy65hjfBJgI9lC2lpVFGamsJDSd/1DII28ZI4aY//Gl5O83K3V4Eippf/21Ow+SggBGTJmYEFqks5jzQv9R+lASdiUednUcJmbtn2hdRt74RDx2LPyjoe1qSCwYYcQq+2oikHuQeJzsdECOg/kZYAN4jrUZ6hnGd/3bMdB+qzixrYcvaCTOPDME7DykQt9hGO8enq8=
   on:
     branch: master
+    condition: "$EMBER_TRY_SCENARIO = 'default'"
+    node: 'stable'
     tags: false
 after_deploy:
 - .travis/publish-gh-pages.sh
