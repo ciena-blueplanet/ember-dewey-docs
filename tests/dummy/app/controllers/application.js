@@ -24,7 +24,6 @@ export default Controller.extend({
     updateProps (val) {
       if (typeOf(val) === 'object') {
         if (val.id === 'events') {
-          debugger
           if (!isEmpty(val.value)) {
             val.value.forEach((selectedEvent) => {
               this.set(`${selectedEvent}Handler`, () => {

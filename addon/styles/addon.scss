@@ -97,13 +97,13 @@ $blockquote-quote-color: #999;
         }
 
         a {
-          transition: font-size 0.3s;
+          transition: font-size .3s;
           text-decoration: none;
 
           &:target {
-            transition: font-size 0.3s;
-            font-size: $frost-font-m;
+            transition: font-size .3s;
             border: 1px solid $frost-color-blue-1;
+            font-size: $frost-font-m;
           }
         }
       }
