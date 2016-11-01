@@ -6,8 +6,8 @@ import {
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(
-  'ember-dewey-docs',
-  'Integration: EmberDeweyDocsComponent',
+  'property-control',
+  'Integration: PropertyControlComponent',
   {
     integration: true
   },
@@ -17,12 +17,12 @@ describeComponent(
       // Handle any actions with this.on('myAction', function(val) { ... });
       // Template block usage:
       // this.render(hbs`
-      //   {{#ember-dewey-docs}}
+      //   {{#property-control}}
       //     template content
-      //   {{/ember-dewey-docs}}
+      //   {{/property-control}}
       // `);
 
-      this.render(hbs`{{ember-dewey-docs}}`)
+      this.render(hbs`{{property-control}}`)
       expect(this.$()).to.have.length(1)
     })
   }

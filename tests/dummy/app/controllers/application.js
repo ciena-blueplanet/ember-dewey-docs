@@ -12,6 +12,7 @@ export default Controller.extend({
   size: 'medium',
   priority: 'primary',
   text: 'Hello',
+  label: 'my checkbox',
   data: [
     {
       label: 'onClick',
@@ -23,6 +24,7 @@ export default Controller.extend({
     updateProps (val) {
       if (typeOf(val) === 'object') {
         if (val.id === 'events') {
+          debugger
           if (!isEmpty(val.value)) {
             val.value.forEach((selectedEvent) => {
               this.set(`${selectedEvent}Handler`, () => {
@@ -33,7 +35,8 @@ export default Controller.extend({
               })
             })
           } else {
-            this.set('onClickHandler', null)
+            this.set('onInputHandler', null)
+            this.set('onBlurHandler', null)
           }
         } else {
           this.set(val.id.toLowerCase(), val.value)

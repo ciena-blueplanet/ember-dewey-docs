@@ -1,13 +1,22 @@
 {{frost-select-outlet}}
 {{#ember-dewey-docs}}
   {{#block-slot 'demo-pane'}}
-    {{frost-button
+    {{!-- {{frost-button
       disabled=disabled
       icon=icon
       size=size
       priority=priority
       text=text
       onClick=onClickHandler
+    }} --}}
+    {{frost-checkbox
+      size=size
+      disabled=disabled
+      checked=checked
+      class=(if errored 'error')
+      label=label
+      onInput=onInputHandler
+      onBlur=onBlurHandler
     }}
   {{/block-slot}}
   {{#block-slot 'code-pane'}}
@@ -15,10 +24,11 @@
       {{frost-button
          autofocus= // (false by default)
          disabled= // (false by default)
+         hook= // (ember-hook property used in testing)
          size= // ['small', etc.]
          priority= // ['primary', etc.]
          text= // e.g. 'Foo'
-         onClick= // action handler for button click
+         onClick= // handler for button click
       }}
     {{ END-SNIPPET --}}
     {{code-snippet name='button.hbs'}}
@@ -34,7 +44,7 @@
           (hash text='large')
         )
       }}
-      {{property-control
+      {{!-- {{property-control
         type='button-group'
         label='Priority'
         buttons=(array
@@ -42,8 +52,28 @@
           (hash text='secondary')
           (hash text='tertiary')
         )
+      }} --}}
+      {{property-control
+        type='checkbox'
+        label='Disabled'
+        size='small'
       }}
       {{property-control
+        type='checkbox'
+        label='Checked'
+        size='small'
+      }}
+      {{property-control
+        type='checkbox'
+        label='Errored'
+        size='small'
+      }}
+      {{property-control
+        type='text'
+        label='Label'
+        value='my checkbox'
+      }}
+      {{!-- {{property-control
         type='checkbox'
         label='Disabled'
         size='small'
@@ -52,12 +82,13 @@
         type='text'
         label='Text'
         value='Hello'
-      }}
+      }} --}}
       {{property-control
         type='multi-select'
         label='Events'
         data=(array
-          (hash label='onClick' value='onClick')
+          (hash label='onBlur' value='onBlur')
+          (hash label='onInput' value='onInput')
         )
       }}
     {{/controls-pane}}

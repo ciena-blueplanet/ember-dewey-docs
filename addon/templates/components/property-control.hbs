@@ -9,15 +9,18 @@
     }}
   {{/if}}
   {{#if (eq type "button-group")}}
-    {{#each buttons as |button|}}
-      {{!-- <input type='button' value={{button.text}}
-         onclick={{action 'onButtonClick' button.text}}> --}}
-         {{frost-button
+    {{#each buttons as |button index|}}
+      <a id={{concat 'btn-' index}} href={{concat '#btn-' index}}
+        class='frost-button small tertiary' type='button'
+        onclick={{action 'onButtonClick' button.text}}>
+        {{button.text}}
+      </a>
+         {{!-- {{frost-button
            size='small'
            priority='tertiary'
            text=button.text
            onClick=(action 'onButtonClick' button.text)
-         }}
+         }} --}}
      {{/each}}
   {{/if}}
   {{#if (eq type "text")}}
