@@ -1,1 +1,1 @@
-export { default } from 'ember-dewey-docs/components/ember-dewey-docs'
+export {default} from 'ember-dewey-docs/components/ember-dewey-docs'

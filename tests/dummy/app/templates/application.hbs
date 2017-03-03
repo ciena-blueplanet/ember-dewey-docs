@@ -1,66 +1,30 @@
 {{frost-select-outlet}}
 {{#ember-dewey-docs}}
   {{#block-slot 'demo-pane'}}
-    {{!-- {{frost-button
-      disabled=disabled
-      icon=icon
-      size=size
-      priority=priority
-      text=text
-      onClick=onClickHandler
-    }} --}}
-    {{frost-checkbox
-      size=size
-      disabled=disabled
-      checked=checked
-      class=(if errored 'error')
-      label=label
-      onInput=onInputHandler
-      onBlur=onBlurHandler
-    }}
+   {{frost-text
+     autofocus=autofocus
+     class=(if errored 'error')
+     disabled=disabled
+     placeholder=placeholder
+     onInput=onInputHandler
+     onKeyUp=onInputHandler
+     onFocusIn=onInputHandler
+     onBlur=onInputHandler
+   }}
   {{/block-slot}}
   {{#block-slot 'code-pane'}}
-    {{!-- BEGIN-SNIPPET button}}
-      {{frost-button
-         autofocus= // (false by default)
-         disabled= // (false by default)
-         hook= // (ember-hook property used in testing)
-         size= // ['small', etc.]
-         priority= // ['primary', etc.]
-         text= // e.g. 'Foo'
-         onClick= // handler for button click
-      }}
-    {{ END-SNIPPET --}}
-    {{code-snippet name='button.hbs'}}
+    {{code-snippet source=source language='hbs'}}
   {{/block-slot}}
   {{#block-slot 'controls-pane'}}
     {{#controls-pane onChange=(action (action 'updateProps'))}}
       {{property-control
-        type='button-group'
-        label='Size'
-        buttons=(array
-          (hash text='small')
-          (hash text='medium')
-          (hash text='large')
-        )
-      }}
-      {{!-- {{property-control
-        type='button-group'
-        label='Priority'
-        buttons=(array
-          (hash text='primary')
-          (hash text='secondary')
-          (hash text='tertiary')
-        )
-      }} --}}
-      {{property-control
         type='checkbox'
-        label='Disabled'
+        label='disabled'
         size='small'
       }}
       {{property-control
         type='checkbox'
-        label='Checked'
+        label='autofocus'
         size='small'
       }}
       {{property-control
@@ -70,24 +34,13 @@
       }}
       {{property-control
         type='text'
-        label='Label'
-        value='my checkbox'
+        label='Placeholder'
+        value=placeholder
       }}
-      {{!-- {{property-control
-        type='checkbox'
-        label='Disabled'
-        size='small'
-      }}
-      {{property-control
-        type='text'
-        label='Text'
-        value='Hello'
-      }} --}}
       {{property-control
         type='multi-select'
         label='Events'
         data=(array
-          (hash label='onBlur' value='onBlur')
           (hash label='onInput' value='onInput')
         )
       }}
@@ -95,24 +48,7 @@
   {{/block-slot}}
 {{/ember-dewey-docs}}
 
-{{!-- {{ember-dewey-docs
-  params=(hash
-    content='frost-text'
-    controls=(array
-      (hash
-        type='select'
-        attrs=(array
-          (hash
-            data=(array 'First' 'Second')
-          )
-        )
-      )
-    )
-    props=(hash
-      value='first'
-    )
-  )
-}} --}}
+
   {{!-- {{#controls-pane}}
     {{component 'frost-select' data=options}}
   {{/controls-pane}} --}}

@@ -9,7 +9,9 @@
       <div class='title'>
         Demo
       </div>
-      {{yield}}
+      <div class='demo-area'>
+        {{yield}}
+      </div>
     {{/yield-slot}}
   </div>
 
@@ -30,10 +32,4 @@
 
 {{#yield-slot 'controls-pane'}}
   {{yield}}
-  {{!-- {{frost-button
-    size='small'
-    priority='tertiary'
-    text='Update'
-    onClick=(action 'onClick')
-  }} --}}
 {{/yield-slot}}

@@ -10,9 +10,9 @@
   {{/if}}
   {{#if (eq type "button-group")}}
     {{#each buttons as |button index|}}
-      <a id={{concat 'btn-' index}} href={{concat '#btn-' index}}
+      <a id={{concat 'btn-' button.text}} href={{concat '#btn-' button.text}}
         class='frost-button small tertiary' type='button'
-        onclick={{action 'onButtonClick' button.text}}>
+        onclick={{action 'onButtonClick'}}>
         {{button.text}}
       </a>
      {{/each}}
