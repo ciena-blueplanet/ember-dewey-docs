@@ -1,0 +1,54 @@
+{{frost-select-outlet}}
+{{#ember-dewey-docs}}
+  {{#block-slot 'demo-pane'}}
+   {{frost-text
+     autofocus=autofocus
+     class=(if errored 'error')
+     disabled=disabled
+     placeholder=placeholder
+     onInput=onInputHandler
+     onKeyUp=onInputHandler
+     onFocusIn=onInputHandler
+     onBlur=onInputHandler
+   }}
+  {{/block-slot}}
+  {{#block-slot 'code-pane'}}
+    {{code-snippet source=source language='hbs'}}
+  {{/block-slot}}
+  {{#block-slot 'controls-pane'}}
+    {{#controls-pane onChange=(action (action 'updateProps'))}}
+      {{property-control
+        type='checkbox'
+        label='disabled'
+        size='small'
+      }}
+      {{property-control
+        type='checkbox'
+        label='autofocus'
+        size='small'
+      }}
+      {{property-control
+        type='checkbox'
+        label='Errored'
+        size='small'
+      }}
+      {{property-control
+        type='text'
+        label='Placeholder'
+        value=placeholder
+      }}
+      {{property-control
+        type='multi-select'
+        label='Events'
+        data=(array
+          (hash label='onInput' value='onInput')
+        )
+      }}
+    {{/controls-pane}}
+  {{/block-slot}}
+{{/ember-dewey-docs}}
+
+
+  {{!-- {{#controls-pane}}
+    {{component 'frost-select' data=options}}
+  {{/controls-pane}} --}}

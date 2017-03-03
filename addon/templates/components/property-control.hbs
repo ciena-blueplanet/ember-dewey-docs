@@ -1,0 +1,32 @@
+<div class='label'>
+  {{label}}
+</div>
+<div class='control'>
+  {{#if (eq type "checkbox")}}
+    {{frost-checkbox
+      id=label
+      onInput=_controlsPane.onChange
+    }}
+  {{/if}}
+  {{#if (eq type "button-group")}}
+    {{#each buttons as |button index|}}
+      <a id={{concat 'btn-' button.text}} href={{concat '#btn-' button.text}}
+        class='frost-button small tertiary' type='button'
+        onclick={{action 'onButtonClick'}}>
+        {{button.text}}
+      </a>
+     {{/each}}
+  {{/if}}
+  {{#if (eq type "text")}}
+    {{frost-text
+      value=value
+      onInput=(action 'onTextChange')
+    }}
+  {{/if}}
+  {{#if (eq type "multi-select")}}
+    {{frost-multi-select
+      data=data
+      onChange=(action 'onEventSelect')
+    }}
+  {{/if}}
+</div>
