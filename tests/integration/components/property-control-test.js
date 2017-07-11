@@ -12,8 +12,8 @@ describe(test.label, function () {
   beforeEach(function () {
     this.register('service:notification-messages', NotificationsService)
     this.inject.service('notification-messages', {as: 'notifications'})
-    // this.inject.service('notification-messages')
-    // this.render(hbs`{{property-control}}`)
+
+    this.render(hbs`{{property-control}}`)
   })
 
   it('renders', function () {
@@ -26,7 +26,6 @@ describe(test.label, function () {
     //   {{/property-control}}
     // `);
 
-    this.render(hbs`{{property-control}}`)
     expect(this.$()).to.have.length(1)
   })
 })
