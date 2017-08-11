@@ -1,3 +1,6 @@
+# 0.0.4 (2017-08-11)
+* Upgrade ember-cli 2.12.3 inter-dependencies
+
 # 0.0.3 (2017-07-11)
 * **Updated** to Ember CLI 2.12.3 and Ember 2.12.x
 * **Updated** ember-try config matrix with Ember LTS 2.4 and LTS 2.8
